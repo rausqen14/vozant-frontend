@@ -1,0 +1,116 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'cy grotesk grand';
+  src: local('cy grotesk grand'), local('CYGroteskGrand');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+  font-family: 'Playfair Display', serif;
+}
+
+.glass {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+.dark .glass {
+  background: linear-gradient(135deg, rgba(30, 30, 35, 0.7), rgba(15, 15, 20, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.light .glass {
+  background: linear-gradient(135deg,
+    rgba(235, 235, 240, 0.85) 0%,
+    rgba(210, 210, 220, 0.65) 50%,
+    rgba(235, 235, 240, 0.85) 100%
+  );
+  border: 1px solid rgba(160, 165, 185, 0.4);
+}
+
+.glass-inner {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass-inner {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.shiny-text {
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+  display: inline-block;
+}
+
+.dark .shiny-text {
+  background-image: linear-gradient(to right, #ffffff 0%, #71717a 45%, #ffffff 50%, #71717a 55%, #ffffff 100%);
+}
+
+.light .shiny-text {
+  background-image: linear-gradient(to right, #000000 0%, #71717a 45%, #000000 50%, #71717a 55%, #000000 100%);
+}
+
+.cta-card-vibrant .shiny-text {
+  background-image: linear-gradient(to right, #ffffff 0%, #e4e4e7 40%, #ffffff 50%, #e4e4e7 60%, #ffffff 100%) !important;
+}
+
+.dark .cta-card-vibrant .shiny-text {
+  background-image: linear-gradient(to right, #000000 0%, #3f3f46 40%, #000000 50%, #3f3f46 60%, #000000 100%) !important;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+::-webkit-scrollbar { width: 5px; }
+.dark::-webkit-scrollbar-track { background: #000; }
+.light::-webkit-scrollbar-track { background: #fff; }
+.dark::-webkit-scrollbar-thumb { background: #222; }
+.light::-webkit-scrollbar-thumb { background: #bbb; }
+
+input::placeholder {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+select {
+  font-family: 'Playfair Display', serif;
+}
+
+@supports (font: -apple-system-body) {
+  @media (min-width: 768px) {
+    .vozant-backdrop {
+      bottom: 2.5rem;
+    }
+  }
+}
