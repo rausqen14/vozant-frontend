@@ -40,7 +40,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ label, name, value, options
   const selectedOption = options.find(opt => opt.value === value);
 
   return (
-    <div className="group space-y-0 relative" ref={containerRef}>
+    <div className="group space-y-0 relative" ref={containerRef} style={{ position: 'relative' }}>
       <label className={labelClasses}>{label}</label>
       <div 
         onClick={() => setIsOpen(!isOpen)}
@@ -58,7 +58,10 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ label, name, value, options
       </div>
 
       {isOpen && (
-        <div className="absolute z-[60] left-0 right-0 mt-2 glass rounded-3xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl animate-in fade-in zoom-in-95 duration-300 origin-top">
+        <div
+          className="absolute z-[60] left-0 right-0 mt-2 glass rounded-3xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl animate-in fade-in zoom-in-95 duration-300 origin-top"
+          style={{ position: 'absolute' }}
+        >
           <div className="py-2 px-2 max-h-60 overflow-y-auto">
             {options.map((option) => (
               <div
