@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { CarFeatures, PredictionResult, Language } from '../types';
-import { getMarketAnalysis, getCarInfoCard } from '../services/geminiService';
+import { getCarInfoCard } from '../services/geminiService';
 import { getOptions, predictPrice, generateCarImages } from '../services/api';
 import fallbackImage1 from '../basic/image-1.png';
 import fallbackImage2 from '../basic/2.png';
@@ -461,8 +461,7 @@ const PredictionPage: React.FC<PredictionPageProps> = ({ language }) => {
         });
 
       const apiResult = await predictPrice(features);
-      const [analysis, carInfoText, images] = await Promise.all([
-        getMarketAnalysis(features, apiResult.estimatedPrice, language),
+      const [carInfoText, images] = await Promise.all([
         getCarInfoCard(features, language),
         imagesPromise
       ]);
@@ -476,7 +475,7 @@ const PredictionPage: React.FC<PredictionPageProps> = ({ language }) => {
 
       setResult({
         estimatedPrice: apiResult.estimatedPrice,
-        marketAnalysis: analysis,
+        marketAnalysis: '',
         confidenceScore: apiResult.confidenceScore ?? 0.94,
         raw: apiResult.raw
       });
