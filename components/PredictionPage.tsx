@@ -3,11 +3,11 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { CarFeatures, PredictionResult, Language } from '../types';
 import { getCarInfoCard } from '../services/geminiService';
 import { getOptions, predictPrice, generateCarImages } from '../services/api';
-import fallbackImage1 from '../basic/image-1.png';
-import fallbackImage2 from '../basic/2.png';
-import fallbackImage3 from '../basic/image-3.png';
-import fallbackImage4 from '../basic/4.png';
-import fallbackImage5 from '../basic/image-5.png';
+import fallbackImage1 from '../basic/image-1.webp';
+import fallbackImage2 from '../basic/2.webp';
+import fallbackImage3 from '../basic/image-3.webp';
+import fallbackImage4 from '../basic/4.webp';
+import fallbackImage5 from '../basic/image-5.webp';
 
 interface PredictionPageProps {
   language: Language;

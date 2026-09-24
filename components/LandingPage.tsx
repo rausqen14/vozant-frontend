@@ -1,10 +1,10 @@
 
 import React from 'react';
 import { Language } from '../types';
-import carImage from '../main_page/image-3.png';
-import carImage1 from '../main_page/image-11.png';
-import carImage2 from '../main_page/image-22.png';
-import carImage3 from '../main_page/image-1.png';
+import carImage from '../main_page/image-3.webp';
+import carImage1 from '../main_page/image-11.webp';
+import carImage2 from '../main_page/image-22.webp';
+import carImage3 from '../main_page/image-1.webp';
 import heroBgLight from '../ana_sayfa_arka_plan_aydınlık.webp';
 import heroBgDark from '../ana_sayfa_arka_plan_karanlık.webp';
 
@@ -193,6 +193,8 @@ const features = [t.feature1, t.feature2, t.feature3];
               <div className="absolute inset-0">
                 <img 
                   src={card.img} 
+                  loading="lazy"
+                  decoding="async"
                   className={`w-full h-full object-cover grayscale brightness-[0.85] contrast-[1.1] dark:brightness-[1.08] dark:contrast-[1.05] group-hover:scale-110 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700 ease-out ${i === 1 || i === 2 ? '-translate-y-5 md:-translate-y-6' : ''}`}
                   style={{ objectPosition: i === 1 || i === 2 ? 'center 46%' : 'center 60%' }}
                   alt={card.title} 
@@ -224,6 +226,8 @@ const features = [t.feature1, t.feature2, t.feature3];
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <img 
                   src={carImage} 
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover grayscale brightness-[0.85] contrast-[1.1] dark:brightness-[1.08] dark:contrast-[1.05] group-hover:scale-110 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700 ease-out" 
                   style={{ objectPosition: 'center 55%' }}
                   alt="Bentley Batur Luxury" 
