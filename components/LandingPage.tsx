@@ -5,8 +5,8 @@ import carImage from '../main_page/image-3.png';
 import carImage1 from '../main_page/image-11.png';
 import carImage2 from '../main_page/image-22.png';
 import carImage3 from '../main_page/image-1.png';
-import heroBgLight from '../ana_sayfa_arka_plan_aydınlık.png';
-import heroBgDark from '../ana_sayfa_arka_plan_karanlık.png';
+import heroBgLight from '../ana_sayfa_arka_plan_aydınlık.webp';
+import heroBgDark from '../ana_sayfa_arka_plan_karanlık.webp';
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -68,11 +68,17 @@ const features = [t.feature1, t.feature2, t.feature3];
         <div className="absolute inset-0 z-0">
           <img
             src={heroBgLight}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="hero-bg-img w-full h-full object-cover dark:hidden"
             alt="Hero Background Light"
           />
           <img
             src={heroBgDark}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="hero-bg-img w-full h-full object-cover hidden dark:block"
             alt="Hero Background Dark"
           />
@@ -151,11 +157,23 @@ const features = [t.feature1, t.feature2, t.feature3];
       {/* Pillars Section */}
       <section className="py-20 md:py-40 mt-10 md:mt-20 px-4 md:px-12 max-w-[1440px] mx-auto w-full">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
-          <div className="max-w-xl">
+          <div className="max-w-2xl lg:max-w-3xl">
             {t.pillarsCat && (
               <span className="text-[10px] tracking-[0.5em] uppercase opacity-70 dark:opacity-40 font-bold mb-4 block font-serif">{t.pillarsCat}</span>
             )}
-            <h2 className="text-4xl md:text-6xl font-serif leading-tight">{t.pillarsTitle}</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-editorial font-medium uppercase tracking-[0.06em] md:tracking-[0.08em] leading-[0.98] text-black dark:text-white">
+              {isTR ? (
+                <>
+                  <span className="block">VOZANT’IN</span>
+                  <span className="block sm:whitespace-nowrap">ZEKÂ KATMANLARI</span>
+                </>
+              ) : (
+                <>
+                  <span className="block">VOZANT’S</span>
+                  <span className="block sm:whitespace-nowrap">INTELLIGENCE LAYERS</span>
+                </>
+              )}
+            </h2>
           </div>
           {t.pillarsDesc && (
             <p className="text-black/80 dark:text-white/40 text-sm max-w-xs mt-6 md:mt-0 font-serif font-light leading-relaxed italic">{t.pillarsDesc}</p>
@@ -185,10 +203,10 @@ const features = [t.feature1, t.feature2, t.feature3];
                 {card.cat && (
                   <span className="text-[10px] tracking-[0.4em] uppercase font-black opacity-80 dark:opacity-70 mb-2 font-serif group-hover:opacity-100 transition-opacity">{card.cat}</span>
                 )}
-                <h3 className={`text-3xl font-serif font-bold mb-4 leading-tight group-hover:shiny-text transition-all duration-500 ${!isTR && (i === 0 || i === 1 || i === 2) ? 'text-[1.65rem] md:text-[1.75rem] whitespace-nowrap tracking-tight' : ''} ${i === 1 ? (isTR ? 'transform translate-y-4 md:translate-y-6' : 'transform -translate-y-1 md:translate-y-0') : i < 3 ? 'transform translate-y-4 md:translate-y-6' : ''}`}>
+                <h3 className={`text-xl sm:text-2xl font-editorial font-medium uppercase tracking-[0.06em] md:tracking-[0.08em] mb-3 leading-snug group-hover:shiny-text transition-all duration-500 ${i === 1 ? (isTR ? 'transform translate-y-4 md:translate-y-6' : 'transform -translate-y-1 md:translate-y-0') : i < 3 ? 'transform translate-y-4 md:translate-y-6' : ''}`}>
                   {card.title}
                 </h3>
-                <p className={`text-lg font-medium opacity-85 dark:opacity-90 leading-relaxed transition-all duration-500 font-serif italic group-hover:opacity-100 ${i === 1 ? (isTR ? 'transform translate-y-4 md:translate-y-6' : 'transform -translate-y-1 md:translate-y-0') : i < 3 ? 'transform translate-y-4 md:translate-y-6' : ''}`}>
+                <p className={`text-sm sm:text-base font-serif font-normal opacity-80 dark:opacity-80 leading-relaxed transition-all duration-500 group-hover:opacity-100 ${i === 1 ? (isTR ? 'transform translate-y-4 md:translate-y-6' : 'transform -translate-y-1 md:translate-y-0') : i < 3 ? 'transform translate-y-4 md:translate-y-6' : ''}`}>
                   {card.desc}
                 </p>
                 <div className="mt-8 w-16 h-[3px] bg-black dark:bg-white transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
@@ -217,10 +235,10 @@ const features = [t.feature1, t.feature2, t.feature3];
             <div className="absolute -top-32 -right-32 w-128 h-128 glass rounded-full opacity-10 group-hover:opacity-20 group-hover:scale-125 transition-all duration-1000 rotate-12 blur-3xl border border-black/10 dark:border-white/5"></div>
             
             <div className="relative z-10 text-black dark:text-white flex flex-col h-full flex-1">
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif leading-[1.1] mb-8 sm:mb-10 md:mb-12 tracking-tighter">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4vw] font-editorial font-medium uppercase leading-[0.95] tracking-[0.08em] sm:tracking-[0.10em] md:tracking-[0.12em] mb-8 sm:mb-10 md:mb-12 text-black dark:text-white">
                 {isTR ? 
-                  <><span className="block font-medium">{"G\u00f6r\u00fcnenin \u00f6tesinde"}</span> <span className="italic shiny-text">{"tahmin."}</span></> : 
-                  <><span className="block font-medium">Predicting beyond</span> <span className="italic shiny-text">the visible.</span></>
+                  <><span className="block">{"G\u00d6R\u00dcNEN\u0130N \u00d6TES\u0130NDE"}</span> <span className="block italic shiny-text">{"TAHM\u0130N."}</span></> : 
+                  <><span className="block">PREDICTING BEYOND</span> <span className="block italic shiny-text">THE VISIBLE.</span></>
                 }
               </h2>
               
@@ -231,10 +249,10 @@ const features = [t.feature1, t.feature2, t.feature3];
                   style={absoluteMetallicBtnStyle}
                 >
                     <span 
-                      className="shiny-text text-[11px] md:text-xs tracking-[0.28em] uppercase font-bold relative z-10 pointer-events-none font-serif transition-all duration-500"
+                      className="shiny-text inline-flex items-center gap-3 text-[11px] md:text-xs tracking-[0.24em] uppercase font-bold relative z-10 pointer-events-none font-serif transition-all duration-500"
                       style={absoluteShinyTextStyle}
                     >
-                      {t.ctaButton}
+                      <span>{t.ctaButton}</span><span className="text-sm sm:text-base leading-none transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
                     </span>
                 </button>
                 
