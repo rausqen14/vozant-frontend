@@ -5,6 +5,8 @@ import carImage from '../main_page/image-3.png';
 import carImage1 from '../main_page/image-11.png';
 import carImage2 from '../main_page/image-22.png';
 import carImage3 from '../main_page/image-1.png';
+import heroBgLight from '../ana_sayfa_arka_plan_aydınlık.png';
+import heroBgDark from '../ana_sayfa_arka_plan_karanlık.png';
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -62,41 +64,88 @@ const features = [t.feature1, t.feature2, t.feature3];
 
   return (
     <div className="flex flex-col font-serif">
-      <section className="hero-section relative h-screen min-h-[100svh] flex items-center justify-center overflow-hidden">
+      <section className="hero-section relative h-screen min-h-[100svh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1549235081-3d600624654c?auto=format&fit=crop&q=90&w=2000"
-            className="w-full h-full object-cover grayscale opacity-40 dark:opacity-60 scale-110 brightness-[1.0] dark:brightness-[1.0] dark:contrast-[1.1]"
-            alt="Luxury"
-            onError={(event) => {
-              event.currentTarget.style.display = 'none';
-            }}
+            src={heroBgLight}
+            className="hero-bg-img w-full h-full object-cover dark:hidden"
+            alt="Hero Background Light"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white dark:from-black via-transparent to-white dark:to-black"></div>
+          <img
+            src={heroBgDark}
+            className="hero-bg-img w-full h-full object-cover hidden dark:block"
+            alt="Hero Background Dark"
+          />
         </div>
-        <div className="hero-content relative z-10 text-center px-6 -translate-y-16 sm:-translate-y-12 md:-translate-y-8">
+        <div className="hero-content relative z-10 w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20">
+          <div className="max-w-xl lg:max-w-2xl text-left flex flex-col items-start">
           {t.heritage && (
             <span className="text-[10px] tracking-[0.8em] uppercase opacity-60 dark:opacity-50 mb-6 block animate-pulse font-bold font-serif">{t.heritage}</span>
           )}
-          <h1 className="text-4xl sm:text-5xl md:text-[8vw] font-editorial font-medium uppercase leading-[0.9] tracking-[0.18em] sm:tracking-[0.2em] md:tracking-[0.25em] mb-8 sm:mb-10 md:mb-12">
-            {isTR ? <>{"DE\u011eERLEME"} <br /> {"SANATI"}</> : <>THE ART OF <br /> VALUATION</>}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4vw] xl:text-[4.3vw] font-editorial font-medium uppercase leading-[0.94] tracking-[0.08em] sm:tracking-[0.10em] md:tracking-[0.12em] mb-8 sm:mb-10 text-black dark:text-white">
+            {isTR ? (<><span className="block whitespace-nowrap">{"DE\u011eERLEME"}</span><span className="block whitespace-nowrap">{"SANATI"}</span></>) : (<><span className="block whitespace-nowrap">THE ART OF</span><span className="block whitespace-nowrap">VALUATION</span></>)}
           </h1>
           <button 
             onClick={onGetStarted} 
-            className="group/hero relative inline-flex items-center justify-center translate-y-2 sm:translate-y-3 md:translate-y-0 px-10 py-4 sm:px-12 sm:py-5 md:px-14 md:py-5 overflow-hidden rounded-full transition-all duration-500 hover:scale-[1.02] hover:-translate-y-0.5 active:scale-95 shadow-xl"
+            className="group/hero relative inline-flex items-center justify-center px-10 py-4 sm:px-12 sm:py-5 md:px-14 md:py-5 overflow-hidden rounded-full transition-all duration-500 hover:scale-[1.02] hover:-translate-y-0.5 active:scale-95 shadow-xl"
             style={absoluteMetallicBtnStyle}
           >
             <span 
-              className="shiny-text relative z-10 block text-center text-[10px] sm:text-xs md:text-sm font-black tracking-[0.18em] sm:tracking-[0.2em] md:tracking-[0.25em] uppercase font-serif transition-all duration-700"
+              className="shiny-text relative z-10 inline-flex items-center gap-3 text-center text-[10px] sm:text-xs md:text-sm font-black tracking-[0.18em] sm:tracking-[0.2em] md:tracking-[0.25em] uppercase font-serif transition-all duration-700"
               style={absoluteShinyTextStyle}
             >
-              {t.discover}
+              <span>{t.discover}</span><span className="text-sm sm:text-base leading-none transition-transform duration-300 group-hover/hero:translate-x-1">→</span>
             </span>
           </button>
+          <div className="mt-8 sm:mt-10 flex flex-wrap sm:flex-nowrap items-center gap-6 sm:gap-8 lg:gap-10 select-none">
+            {/* Column 1: DATA */}
+            <div className="flex flex-col text-left">
+              <span className="text-[10px] sm:text-[11px] font-serif font-bold tracking-[0.24em] uppercase text-black/60 dark:text-white/60">
+                DATA
+              </span>
+              <span className="text-2xl sm:text-3xl lg:text-[2.2rem] font-editorial font-bold tracking-tight text-black dark:text-white my-0.5 sm:my-1 leading-none">
+                2M+
+              </span>
+              <span className="text-[9px] sm:text-[10px] font-serif font-medium tracking-[0.18em] uppercase text-black/45 dark:text-white/45 leading-tight">
+                {isTR ? "ARAÇ KAYDI" : "VEHICLE RECORDS"}
+              </span>
+            </div>
+
+            {/* Vertical Divider 1 */}
+            <div className="hidden sm:block h-10 sm:h-12 w-[1px] bg-black/15 dark:bg-white/15 self-center" />
+
+            {/* Column 2: ACCURACY */}
+            <div className="flex flex-col text-left">
+              <span className="text-[10px] sm:text-[11px] font-serif font-bold tracking-[0.24em] uppercase text-black/60 dark:text-white/60">
+                {isTR ? "DOĞRULUK" : "ACCURACY"}
+              </span>
+              <span className="text-2xl sm:text-3xl lg:text-[2.2rem] font-editorial font-bold tracking-tight text-black dark:text-white my-0.5 sm:my-1 leading-none">
+                {isTR ? "%96+" : "96%+"}
+              </span>
+              <span className="text-[9px] sm:text-[10px] font-serif font-medium tracking-[0.18em] uppercase text-black/45 dark:text-white/45 leading-tight">
+                {isTR ? "DEĞERLEME MOTORU" : "VALUATION ENGINE"}
+              </span>
+            </div>
+
+            {/* Vertical Divider 2 */}
+            <div className="hidden sm:block h-10 sm:h-12 w-[1px] bg-black/15 dark:bg-white/15 self-center" />
+
+            {/* Column 3: MARKETS */}
+            <div className="flex flex-col text-left">
+              <span className="text-[10px] sm:text-[11px] font-serif font-bold tracking-[0.24em] uppercase text-black/60 dark:text-white/60">
+                {isTR ? "PAZAR" : "MARKET"}
+              </span>
+              <span className="text-2xl sm:text-3xl lg:text-[2.2rem] font-editorial font-bold tracking-tight text-black dark:text-white my-0.5 sm:my-1 leading-none">
+                {isTR ? "ABD" : "USA"}
+              </span>
+              <span className="text-[9px] sm:text-[10px] font-serif font-medium tracking-[0.18em] uppercase text-black/45 dark:text-white/45 leading-tight">
+                {isTR ? "ARAÇ KAPSAMI" : "VEHICLE COVERAGE"}
+              </span>
+            </div>
+          </div>
+          </div>
         </div>
-        <div className="vozant-backdrop absolute bottom-32 sm:bottom-10 md:bottom-0 left-0 w-full overflow-hidden whitespace-nowrap select-none pointer-events-none translate-y-0">
-            <h2 className="w-full text-center md:text-left text-[20vw] sm:text-[21vw] md:text-[21vw] font-editorial font-semibold uppercase tracking-[0.03em] italic text-black/10 dark:text-white/20 -translate-x-[3vw] md:-translate-x-[2vw]">VOZANT</h2>
-        </div>
+
       </section>
 
       {/* Pillars Section */}
@@ -198,6 +247,19 @@ const features = [t.feature1, t.feature2, t.feature3];
       </section>
 
       <style>{`
+        .hero-bg-img {
+          object-position: 62% center;
+        }
+        @media (min-width: 1024px) and (max-aspect-ratio: 172/100) {
+          .hero-bg-img {
+            object-position: 73% center;
+          }
+        }
+        @media (max-width: 767px) {
+          .hero-bg-img {
+            object-position: 68% center;
+          }
+        }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @media (max-height: 700px) {
           .hero-content {
